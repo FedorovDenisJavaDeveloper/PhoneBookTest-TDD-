@@ -15,7 +15,10 @@ public class PhoneBook {
         return phoneBook.size();
     }
 
-    public String findByNumber(String phone){
-        return null;
+    public String findByNumber(String phone) {
+        if (!reversedKeyBook.containsKey(phone)) {
+            return null;
+        }
+        return reversedKeyBook.get(phone);
     }
 }

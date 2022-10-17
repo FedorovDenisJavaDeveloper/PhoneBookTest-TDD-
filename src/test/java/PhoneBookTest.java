@@ -51,6 +51,7 @@ public class PhoneBookTest {
     @ParameterizedTest
     @MethodSource("sourceFindByNumber")
     public void testFindByNumber(String inputPhone, String expected){
+        testPhoneBook.add("Petya", "89031901362");
         String result = testPhoneBook.findByNumber(inputPhone);
         assertEquals(expected, result);
     }
