@@ -83,15 +83,18 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void testPrintAllNames(){
-        testPhoneBook.add("Vasya", "89031901362");
+    public void testPrintAllNames() {
+        testPhoneBook.add("Petya", "89031901362");
         testPhoneBook.add("Anya", "89991112233");
-        testPhoneBook.add("Igor","89111231212");
+        testPhoneBook.add("Igor", "89111231212");
+        testPhoneBook.add("Vasya", "89111231219");
+
         Set<String> resultNames = testPhoneBook.printAllNames();
         Set<String> expectedNames = new TreeSet<>();
-        expectedNames.addAll(Set.of("Vasya", "Igor", "Anya"));
+        expectedNames.addAll(Set.of("Vasya", "Igor", "Anya", "Petya"));
         assertEquals(expectedNames, resultNames);
     }
+
     @AfterAll
     public static void finishedAll() {
         testPhoneBook = null;
