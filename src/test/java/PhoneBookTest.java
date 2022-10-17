@@ -1,9 +1,12 @@
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -77,6 +80,17 @@ public class PhoneBookTest {
                 Arguments.of("", null),
                 Arguments.of("Ismail", null)
         );
+    }
+
+    @Test
+    public void testPrintAllNames(){
+        testPhoneBook.add("Vasya", "89031901362");
+        testPhoneBook.add("Anya", "89991112233");
+        testPhoneBook.add("Igor","89111231212");
+        Set<String> resultNames = testPhoneBook.printAllNames();
+        Set<String> expectedNames = new TreeSet<>();
+        expectedNames.addAll(Set.of("Vasya", "Igor", "Anya"));
+        assertEquals(expectedNames, resultNames);
     }
     @AfterAll
     public static void finishedAll() {
