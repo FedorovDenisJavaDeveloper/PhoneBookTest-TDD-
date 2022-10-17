@@ -21,4 +21,8 @@ public class PhoneBook {
         }
         return reversedKeyBook.get(phone);
     }
+
+    public String findByName(String name){
+        return null;
+    }
 }

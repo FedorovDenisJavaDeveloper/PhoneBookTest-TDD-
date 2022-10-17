@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -22,7 +21,7 @@ public class PhoneBookTest {
     @ParameterizedTest
     @MethodSource("sourceAdd")
     public void testAdd(String inputName, String inputPhone, int expected) {
-        int result = testPhoneBook.add(inputName, inputName);
+        int result = testPhoneBook.add(inputName, inputPhone);
         assertEquals(expected, result);
     }
 
@@ -50,16 +49,33 @@ public class PhoneBookTest {
 
     @ParameterizedTest
     @MethodSource("sourceFindByNumber")
-    public void testFindByNumber(String inputPhone, String expected){
-        testPhoneBook.add("Petya", "89031901362");
+    public void testFindByNumber(String inputPhone, String expected) {
+        testPhoneBook.add("Vasya", "89031901362");
         String result = testPhoneBook.findByNumber(inputPhone);
         assertEquals(expected, result);
     }
-    private static Stream<Arguments> sourceFindByNumber(){
+
+    private static Stream<Arguments> sourceFindByNumber() {
         return Stream.of(
-                Arguments.of("89031901362", "Petya"),
+                Arguments.of("89031901362", "Vasya"),
                 Arguments.of("", null),
-                Arguments.of("89031112233",null)
+                Arguments.of("89031112233", null)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("sourceFindByName")
+    public void testFindByName(String inputName, String expected) {
+        testPhoneBook.add("Vasya", "89031901362");
+        String result = testPhoneBook.findByNumber(inputName);
+        assertEquals(expected, result);
+    }
+
+    private static Stream<Arguments> sourceFindByName() {
+        return Stream.of(
+                Arguments.of("Vasya", "89031901362"),
+                Arguments.of("", null),
+                Arguments.of("Ismail", null)
         );
     }
     @AfterAll
