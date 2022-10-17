@@ -23,6 +23,9 @@ public class PhoneBook {
     }
 
     public String findByName(String name){
-        return null;
+        if(!phoneBook.containsKey(name)) {
+            return null;
+        }
+        return phoneBook.get(name);
     }
 }

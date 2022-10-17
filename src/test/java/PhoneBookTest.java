@@ -67,7 +67,7 @@ public class PhoneBookTest {
     @MethodSource("sourceFindByName")
     public void testFindByName(String inputName, String expected) {
         testPhoneBook.add("Vasya", "89031901362");
-        String result = testPhoneBook.findByNumber(inputName);
+        String result = testPhoneBook.findByName(inputName);
         assertEquals(expected, result);
     }
 
